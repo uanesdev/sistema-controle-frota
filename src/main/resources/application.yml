@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/uast_fbd_frota
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 300000
+      connection-timeout: 30000
+  jpa:
+    open-in-view: false
+  sql:
+    init:
+      mode: never
