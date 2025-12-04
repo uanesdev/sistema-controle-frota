@@ -13,7 +13,7 @@ public class Veiculo {
     private String placa;
     private String modelo;
     private int ano;
-    private VehicleStatus status;
+    private String status;
     private boolean ativo = true;
 }
 

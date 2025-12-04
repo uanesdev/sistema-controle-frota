@@ -1,11 +1,9 @@
-CREATE TYPE status_veiculo AS ENUM ('disponivel', 'em_manutencao', 'em_viagem', 'inativo');
-
 CREATE TABLE veiculo (
     id SERIAL PRIMARY KEY,
     placa VARCHAR(10) UNIQUE,
     modelo VARCHAR(100),
     ano INTEGER,
-    status status_veiculo DEFAULT 'disponivel',
+    status VARCHAR(20) DEFAULT 'disponivel',
     ativo BOOLEAN DEFAULT true
 );
 
