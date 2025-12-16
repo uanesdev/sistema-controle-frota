@@ -143,10 +143,15 @@ public class VeiculoRepository {
         List<Object> params = new ArrayList<>();
 
         updates.forEach((key, value) -> {
-            sql.append(key).append(" = ?, ");
+            if ("status".equals(key)) {
+                sql.append("status = ?::status_veiculo, ");
+            } else {
+                sql.append(key).append(" = ?, ");
+            }
             params.add(value);
         });
 
+        //remover vírgula
         sql.setLength(sql.length() - 2);
 
         sql.append(" WHERE id = ? RETURNING id, placa, modelo, ano, status, ativo");

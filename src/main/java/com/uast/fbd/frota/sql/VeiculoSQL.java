@@ -1,10 +1,10 @@
 package com.uast.fbd.frota.sql;
 
 public class VeiculoSQL {
-
+    // ?::status_veiculo é para tratar a string como enum
     public static final String QUERY_CRIAR_VEICULO = """
             INSERT INTO veiculo (placa, modelo, ano, status, ativo)
-                VALUES (?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?::status_veiculo, ?)
                 RETURNING *;
         """;
 
