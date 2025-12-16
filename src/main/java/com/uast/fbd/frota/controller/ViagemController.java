@@ -1,6 +1,7 @@
 package com.uast.fbd.frota.controller;
 
 import com.uast.fbd.frota.entity.Viagem;
+import com.uast.fbd.frota.service.RelatoriosService;
 import com.uast.fbd.frota.service.ViagemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/viagens")
@@ -16,6 +18,7 @@ import java.util.List;
 public class ViagemController {
 
     private final ViagemService service;
+    private final RelatoriosService relatoriosService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,5 +63,10 @@ public class ViagemController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void desativar(@PathVariable Long id) {
         service.desativar(id);
+    }
+
+    @GetMapping("em-andamento")
+    public List<Map<String, Object>> viagensEmAndamento() {
+        return relatoriosService.viagensEmAndamento();
     }
 }
