@@ -25,7 +25,8 @@ public class RelatoriosSQL {
           AND (v.motorista_id = CAST(? AS BIGINT) OR CAST(? AS BIGINT) IS NULL)
 """;
 
-    //left join
+    //left join de total de subqueries para não excluir quando um deles for 0 (abastecimento e
+    // manutenção)/COALESCE (retornar o valor se não for null ou 0 se for null)
     public static final String CUSTOS_POR_VEICULO = """
         SELECT
             v.id AS veiculo_id,
